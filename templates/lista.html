@@ -4,6 +4,13 @@
     <!-- Charset utf-8 para corrigir problemas de caracter especiais -->
     <meta charset="utf-8" />
     <title>Biblioteca</title>
+    <!-- Importação da Biblioteca CSS do Vanilla -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
+    <!-- Importação da Biblioteca CSS do Vanilla -->
 
     <!-- Estilo usando CDN para o bootstrap-->
     <link
@@ -42,5 +49,24 @@
     <footer>
       <p>&copy; 2024 SENAI. Todos os direitos reservados.</p>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var tabela = document.querySelector(".table");
+        var dataTable = new DataTable(tabela, {
+          searchable: true, // Habilita a pesquisa
+          sortable: true, // Habilita a ordenação
+          perPage: 5, // Define 5 linhas por página
+          columns: [
+            { select: 0, sort: "desc" }, // Ordena a primeira coluna em ordem ascendente
+          ],
+          labels: {
+            placeholder: "Pesquisar...", // Texto do placeholder da barra de pesquisa
+            perPage: "{select} resultados por página", // Texto da seleção de itens por página
+            noRows: "Nenhum resultado encontrado", // Texto quando não há resultados
+            info: "Mostrando {start} a {end} de {rows} resultados", // Texto de informações
+          },
+        });
+      });
+    </script>
   </body>
 </html>
